@@ -1,6 +1,7 @@
 package com.example.rahulpatni.googlemapstesting;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.annotation.MainThread;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -22,8 +23,6 @@ import org.w3c.dom.Text;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
-    private boolean mapReady = false;
 
     private double[] locations;
 
@@ -69,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     void plotLocation(double[] locations) {
         try {
-        for (int i = 0; i < 10 && mapReady == false; i++) {
+        for (int i = 0; i < 10; i++) {
             wait(1000);
 
         } }
@@ -77,10 +76,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(this, ex.getMessage().toString(), Toast.LENGTH_LONG).show();
         }
 
-        if (mapReady == false) {
-            Toast.makeText(this, "Timed out!", Toast.LENGTH_LONG).show();
-            return;
-        }
 
 
     }
@@ -96,18 +91,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng sydney = new LatLng(locations[0], locations[1]);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in West Lala"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15));
 
 
         try {
             mMap.setMyLocationEnabled(true);
-        } catch (Exception ex) {
+        } catch (SecurityException ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
 
 
-
-
-        mapReady = true;
     }
 }
