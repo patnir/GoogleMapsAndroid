@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.rahulpatni.googlemapstesting.MainActivity">
+
+    <Button
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:text="Go to Map"
+        android:id="@+id/btnMap"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter location"
+        android:gravity="center_vertical"
+        android:id="@+id/txtGetLocation"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="The location probs"
+        android:textSize="25dp"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:id="@+id/txtPutLocation"
+        />
+</LinearLayout>
